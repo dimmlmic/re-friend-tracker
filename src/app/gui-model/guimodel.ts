@@ -9,7 +9,7 @@ export class GuiModel {
 
     private _guiModel = {
         "application": {
-            "title": "Requirements Engineering Friend Tracker",
+            "title": "dimmlmics Friend Tracker",
             "formList": [
                 {
                     "id": "FriendForm",
@@ -28,6 +28,13 @@ export class GuiModel {
                             "name": "FirstName",
                             "width": 1,
                             "required": true
+                        },
+						{
+                            "id":   "nickname",
+                            "type": "text",
+                            "name": "Nickname",
+                            "width": 2,
+							"required": true
                         },
                         {
                             "id":   "location",
@@ -62,7 +69,15 @@ export class GuiModel {
                         {
                             "type": "okButton",
                             "name": "Ok"
-                        }
+                        },
+						{
+							"id": "group",
+							"type": "autocomplete",
+							"name": "Group",
+							"data": ["Study", "Family", "School"],
+							"form": "GroupForm",
+							"width": 2
+						}
                     ]
                 },
                 {
@@ -89,6 +104,52 @@ export class GuiModel {
                             "name": "Ok"
                         }
                     ]
+                },
+                {
+                    "id": "GroupForm",
+                    "title": "Group",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "GroupName",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+				{
+                    "id": "ActivityForm",
+                    "title": "Activity",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "Activity",
+                            "width": 2,
+                            "required": true
+                        },
+						{
+							"id": "location",
+							"type": "autocomplete",
+							"name": "Location",
+							"data": ["Adelboden", "Winterthur", "Zinal", "Zürich"],          
+							"form": "LocationForm",
+							"width": 2
+						}
+                    ]
                 }
             ],
             "pageList": [
@@ -110,6 +171,19 @@ export class GuiModel {
                             "color": "yellow",
                             "page": "locationspage",
                         },
+						{
+                            "type": "button",
+                            "name": "Groups",
+                            "icon": "fa-weixin",
+                            "color": "wisteria",
+                            "page": "groupspage",
+                        },{
+                            "type": "button",
+                            "name": "Activity",
+                            "icon": "fa-user",
+                            "color": "blue",
+                            "page": "activitypage",
+                        }
                     ]
                 },
                 {
@@ -127,16 +201,25 @@ export class GuiModel {
                                 "form": "FriendForm"
                             }
                         },
+						{
+                            "type": "button",
+                            "name": "NewFriend",
+                            "icon": "fa-user",
+                            "color": "green",
+                            "form": {
+                                "form": "FriendForm"
+                            }
+                        },
                         {
                             "type": "list",
                             "icon": "fa-user",
                             "color": "blue",
                             "search": true,
-                            "data": [ { name: "Anton Amacker" }, { name: "Britta Beavers"} ],
-                            "form": {
-                                "form": "FriendForm"
+                            "data": [ { name: "Anton Amacker"}, { name: "Britta Beavers"} ],
+                            "page": {
+                                "page": "activitypage"
                             }
-                        },
+						}
                     ]
                 },
                 {
@@ -165,7 +248,70 @@ export class GuiModel {
                             }
                         },
                     ]
-                }
+                },
+				{
+					"id": "groupspage",
+					"elementList": [
+						{
+							"type": "backbutton",
+						},
+						{
+                            "type": "newButton",
+                            "name": "NewGroup",
+                            "icon": "fa-weixin",
+                            "color": "green",
+                            "form": {
+                                "form": "GroupForm"
+                            }
+                        },
+						{
+							"type": "list",
+                            "icon": "fa-weixin",
+                            "color": "wisteria",
+							"search": true,
+							"data": [{name: "Study"}, {name: "Family"}, {name: "School"}],
+                            "form": {
+                                "form": "GroupForm"
+                            }
+						}
+					]
+				},
+				{
+					"id": "activitypage",
+					"elementList": [
+						{
+							"type": "backbutton",
+						},
+						{
+                            "type": "newButton",
+                            "name": "EditFriend",
+                            "icon": "fa-user",
+                            "color": "green",
+                            "form": {
+                                "form": "FriendForm"
+                            }
+                        },
+						{
+                            "type": "newButton",
+                            "name": "AddActivity",
+                            "icon": "fa-user",
+                            "color": "green",
+                            "form": {
+                                "form": "ActivityForm"
+                            }
+                        },
+						{
+							"type": "list",
+                            "icon": "fa-weixin",
+                            "color": "orange",
+							"search": true,
+							"data": [{name: "Movie Why Him"}, {name: "Eating Pizza"}, {name: "Running Eschenberg"}],
+                            "form": {
+                                "form": "ActivityForm"
+                            }
+						}
+					]
+				}
             ]
         }
     };
