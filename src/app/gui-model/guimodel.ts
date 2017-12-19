@@ -148,7 +148,21 @@ export class GuiModel {
 							"data": ["Adelboden", "Winterthur", "Zinal", "Zürich"],          
 							"form": "LocationForm",
 							"width": 2
-						}
+						},
+						{
+                            "id": "comment",
+                            "type": "text",
+                            "name": "Comments",
+                            "width": 2,
+                            "height": 4,
+                            "maxLength": 5000,
+                        },
+                        {
+                            "id": "date",
+                            "type": "date",
+                            "name": "Date",
+                            "width": 2
+                        }
                     ]
                 }
             ],
@@ -177,12 +191,6 @@ export class GuiModel {
                             "icon": "fa-weixin",
                             "color": "wisteria",
                             "page": "groupspage",
-                        },{
-                            "type": "button",
-                            "name": "Activity",
-                            "icon": "fa-user",
-                            "color": "blue",
-                            "page": "activitypage",
                         }
                     ]
                 },
@@ -216,9 +224,7 @@ export class GuiModel {
                             "color": "blue",
                             "search": true,
                             "data": [ { name: "Anton Amacker"}, { name: "Britta Beavers"} ],
-                            "page": {
-                                "page": "activitypage"
-                            }
+                            "page": "activitypage",
 						}
                     ]
                 },
